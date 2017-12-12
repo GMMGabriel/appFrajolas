@@ -1,0 +1,497 @@
+-- MySQL dump 10.13  Distrib 5.7.10, for Win64 (x86_64)
+--
+-- Host: localhost    Database: dbfrajolas
+-- ------------------------------------------------------
+-- Server version	5.7.10-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `tbl_avaliacao`
+--
+
+DROP TABLE IF EXISTS `tbl_avaliacao`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_avaliacao` (
+  `idAvaliacao` int(11) NOT NULL AUTO_INCREMENT,
+  `idProduto` int(11) NOT NULL,
+  `nota` float NOT NULL,
+  PRIMARY KEY (`idAvaliacao`),
+  KEY `fk_avaliacao_produto_idx` (`idProduto`),
+  CONSTRAINT `fk_avaliacao_produto` FOREIGN KEY (`idProduto`) REFERENCES `tbl_produto` (`idProduto`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_avaliacao`
+--
+
+LOCK TABLES `tbl_avaliacao` WRITE;
+/*!40000 ALTER TABLE `tbl_avaliacao` DISABLE KEYS */;
+INSERT INTO `tbl_avaliacao` VALUES (1,3,5),(2,2,4.5),(3,1,2.5),(4,2,3),(5,5,4.5),(6,4,5),(7,4,1.5),(8,3,2),(9,1,5),(10,5,2.5),(11,5,3),(12,3,4.5),(13,1,3.5),(14,4,2),(15,2,2.5),(16,2,3.5),(17,2,3.5),(18,5,3.5),(19,5,5),(20,2,5),(21,2,5),(22,1,3.5),(23,1,4.5),(24,3,5),(25,4,5),(26,6,5),(27,10,5),(28,10,4),(29,10,4.5),(30,8,3.5),(31,1,5),(32,1,3.5);
+/*!40000 ALTER TABLE `tbl_avaliacao` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_categoria`
+--
+
+DROP TABLE IF EXISTS `tbl_categoria`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_categoria` (
+  `idCategoria` int(11) NOT NULL AUTO_INCREMENT,
+  `categoria` varchar(50) NOT NULL,
+  PRIMARY KEY (`idCategoria`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_categoria`
+--
+
+LOCK TABLES `tbl_categoria` WRITE;
+/*!40000 ALTER TABLE `tbl_categoria` DISABLE KEYS */;
+INSERT INTO `tbl_categoria` VALUES (1,'Pizzas doces'),(2,'Pizzas salgadas'),(3,'Pizzas grandes'),(4,'Pizzas pequenas');
+/*!40000 ALTER TABLE `tbl_categoria` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_curiosidades`
+--
+
+DROP TABLE IF EXISTS `tbl_curiosidades`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_curiosidades` (
+  `idCuriosidade` int(11) NOT NULL AUTO_INCREMENT,
+  `imagem` varchar(100) NOT NULL,
+  `descricao` varchar(4000) NOT NULL,
+  `titulo` varchar(50) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  PRIMARY KEY (`idCuriosidade`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_curiosidades`
+--
+
+LOCK TABLES `tbl_curiosidades` WRITE;
+/*!40000 ALTER TABLE `tbl_curiosidades` DISABLE KEYS */;
+INSERT INTO `tbl_curiosidades` VALUES (2,'Arquivo/DeVoltaParaOFuturo.jpg','De volta para o futuro','Futuro',1);
+/*!40000 ALTER TABLE `tbl_curiosidades` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_fale_conosco`
+--
+
+DROP TABLE IF EXISTS `tbl_fale_conosco`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_fale_conosco` (
+  `codigo` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) NOT NULL,
+  `telefone` varchar(15) DEFAULT NULL,
+  `celular` varchar(15) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `homePage` varchar(150) DEFAULT NULL,
+  `linkFace` varchar(150) DEFAULT NULL,
+  `profissao` varchar(100) NOT NULL,
+  `sugestoes` varchar(300) DEFAULT NULL,
+  `sexo` char(1) NOT NULL,
+  `infoProduto` varchar(300) DEFAULT NULL,
+  PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_fale_conosco`
+--
+
+LOCK TABLES `tbl_fale_conosco` WRITE;
+/*!40000 ALTER TABLE `tbl_fale_conosco` DISABLE KEYS */;
+INSERT INTO `tbl_fale_conosco` VALUES (2,'Gabriel de Melo Marcondes','','011 93256-8745','gabriel_santos1313@hotmail.com','','','Técnico de Informática','','M',''),(5,'Marcel','','011 93164-9658','marcel@marcel.marcel','','','Professor','Não está pegando no IE, perdeu ponto nisso!','M',''),(6,'Gabriel de Melo Marcondes','011 4707-2731','61249856','asfggva@wjba.cosihdf','https://www.w3schools.com','https://www.facebook.com/gabriel','Técnico de Informática','zdgsdfgbdfhbdgthndgh','M','ghnfgnjfyjtrjktyhjmnfdhj'),(7,'Caique','123456789','123456789','casdcads@efsefes','','','Desenvolvedor','ESTOUROUUUUUUUUUUUUUUUUUUUUUUU','M','bla bla bla'),(9,'Laura','','11 97374-7568','gabriel-santos1313@hotmail.com','','','Técnico de Informática','','F',''),(16,'akdfgawrgasg','','011 93256-8745','lelepimentinha@hotmail.com','','','Professora','','F',''),(17,'Bruno Correia Ramos','011 4002-8922','011 93256-8745','bri@ramen.com','https://bluninhovemquetem76321.com.br','https://bluno763','Bluninho salgadinho','Bluninho vai embora','M','Bluninho terminou');
+/*!40000 ALTER TABLE `tbl_fale_conosco` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_foto`
+--
+
+DROP TABLE IF EXISTS `tbl_foto`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_foto` (
+  `codigo` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) NOT NULL,
+  `descricao` varchar(100) NOT NULL,
+  `foto` varchar(200) NOT NULL,
+  PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_foto`
+--
+
+LOCK TABLES `tbl_foto` WRITE;
+/*!40000 ALTER TABLE `tbl_foto` DISABLE KEYS */;
+INSERT INTO `tbl_foto` VALUES (1,'','','arquivos/users_64.png'),(2,'','','arquivos/content_64.png'),(3,'chat','imagem de chat','arquivos/dialogue_64.png'),(4,'chat','imagem de chat','arquivos/dialogue_64.png'),(5,'chat','imagem de chat','arquivos/dialogue_64.png'),(6,'chat','imagem de chat','arquivos/dialogue_64.png'),(7,'chat','imagem de chat','arquivos/dialogue_64.png'),(8,'gsetjrykit5uiedrthse','seghsertjrtksry','arquivos/home64.png'),(9,'home','imagem de casa','arquivos/home64.png'),(10,'filme','de volta para o futuro','arquivos/DeVoltaParaOFuturo.jpg');
+/*!40000 ALTER TABLE `tbl_foto` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_info_pizzaria`
+--
+
+DROP TABLE IF EXISTS `tbl_info_pizzaria`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_info_pizzaria` (
+  `id_infoPizzaria` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) NOT NULL,
+  `telefone` varchar(15) NOT NULL,
+  PRIMARY KEY (`id_infoPizzaria`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_info_pizzaria`
+--
+
+LOCK TABLES `tbl_info_pizzaria` WRITE;
+/*!40000 ALTER TABLE `tbl_info_pizzaria` DISABLE KEYS */;
+INSERT INTO `tbl_info_pizzaria` VALUES (1,'Frajola\'s Pizzaria','(11) 4707-2731');
+/*!40000 ALTER TABLE `tbl_info_pizzaria` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_infopizzaria`
+--
+
+DROP TABLE IF EXISTS `tbl_infopizzaria`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_infopizzaria` (
+  `nome` varchar(50) DEFAULT NULL,
+  `telefone` varchar(15) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_infopizzaria`
+--
+
+LOCK TABLES `tbl_infopizzaria` WRITE;
+/*!40000 ALTER TABLE `tbl_infopizzaria` DISABLE KEYS */;
+INSERT INTO `tbl_infopizzaria` VALUES ('Frajola\'s Pizzaria','(11) 4707-2731','frajolaspizzaria@gmail.com');
+/*!40000 ALTER TABLE `tbl_infopizzaria` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_nivel`
+--
+
+DROP TABLE IF EXISTS `tbl_nivel`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_nivel` (
+  `idNivel` int(11) NOT NULL AUTO_INCREMENT,
+  `nivel` varchar(45) NOT NULL,
+  PRIMARY KEY (`idNivel`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_nivel`
+--
+
+LOCK TABLES `tbl_nivel` WRITE;
+/*!40000 ALTER TABLE `tbl_nivel` DISABLE KEYS */;
+INSERT INTO `tbl_nivel` VALUES (1,'Administrador'),(2,'Operador básico'),(3,'Cataloguista');
+/*!40000 ALTER TABLE `tbl_nivel` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_nivel_de_usuario`
+--
+
+DROP TABLE IF EXISTS `tbl_nivel_de_usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_nivel_de_usuario` (
+  `id_nivel` int(11) NOT NULL AUTO_INCREMENT,
+  `nivel` varchar(20) DEFAULT NULL,
+  `descricao` text,
+  PRIMARY KEY (`id_nivel`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_nivel_de_usuario`
+--
+
+LOCK TABLES `tbl_nivel_de_usuario` WRITE;
+/*!40000 ALTER TABLE `tbl_nivel_de_usuario` DISABLE KEYS */;
+INSERT INTO `tbl_nivel_de_usuario` VALUES (1,'adm sistema','pode realizar o gerenciamento de todo o site'),(2,'operador basico','manipula coisas bascicas do site'),(3,'cataloguista','gerencia o controle de produtos do site');
+/*!40000 ALTER TABLE `tbl_nivel_de_usuario` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_nossa_historia`
+--
+
+DROP TABLE IF EXISTS `tbl_nossa_historia`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_nossa_historia` (
+  `idNossaHistoria` int(11) NOT NULL AUTO_INCREMENT,
+  `texto` varchar(4000) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  PRIMARY KEY (`idNossaHistoria`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_nossa_historia`
+--
+
+LOCK TABLES `tbl_nossa_historia` WRITE;
+/*!40000 ALTER TABLE `tbl_nossa_historia` DISABLE KEYS */;
+INSERT INTO `tbl_nossa_historia` VALUES (1,'A nossa pizzaria tem anos de história, quase um século, virou uma tradição de família. Atualmente a direção da pizzaria está em minha responsabilidade, meu nome é Silvester Frajola’s Ferrari, dono da Frajola’s pizzaria. Meu avô Pietro Frajola’s Marini inaugurou a pizzaria com os seus 48 anos em Milão, Itália. Ele dizia que a pizza trazia muitas alegrias na vida das pessoas, por isso passou a fazê-las. Ele faleceu aos 69 anos, durante esses 21 anos em que ele trabalhou na pizzaria, meu pai Silvester Frajola’s Messina sempre gostou muito de ver meu avô trabalhando nela. Foi por isso que assumiu o negócio do vovô aos 30 anos. Comigo não foi diferente, adorava ver meu pai trabalhando na pizzaria, sou o irmão mais novo de 7 irmãos, meu pai me teve com 52 anos, e apenas eu e meu irmão Jair Frajola’s Bernardo nos interessamos no negócio da família. Quando eu tinha 22 anos, meu pai faleceu com 74 anos, então meu irmão Jair Frajola’s Bernardo assumiu o negócio em Milão, e eu abri uma outra pizzaria (de mesmo nome é claro) no Brasil, localizada na Av. Looney Tunes, nº 666 no Rio de Janeiro. Meus pais e avós são Italianos, vai ver é por isso que a pizza “corre nas minhas veias”, mas nasci no Brasil, em uma das viagens dos meus pais, exatamente por isso abri uma pizzaria aqui, adoro este lugar.',1);
+/*!40000 ALTER TABLE `tbl_nossa_historia` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_nossos_ambientes`
+--
+
+DROP TABLE IF EXISTS `tbl_nossos_ambientes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_nossos_ambientes` (
+  `idNossosAmb` int(11) NOT NULL AUTO_INCREMENT,
+  `pais` varchar(50) NOT NULL,
+  `estado` varchar(50) NOT NULL,
+  `logradouro` varchar(100) NOT NULL,
+  `numero` varchar(6) NOT NULL,
+  `telefone` varchar(15) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  PRIMARY KEY (`idNossosAmb`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_nossos_ambientes`
+--
+
+LOCK TABLES `tbl_nossos_ambientes` WRITE;
+/*!40000 ALTER TABLE `tbl_nossos_ambientes` DISABLE KEYS */;
+INSERT INTO `tbl_nossos_ambientes` VALUES (1,'Itália','Milão','rua Augustos Pertue','280','3428-6712',1),(2,'Brasil','Rio de Janeiro','Av. Looney Tunes','666','4725-1563',1),(3,'teste','teste','teste','teste','teste',1);
+/*!40000 ALTER TABLE `tbl_nossos_ambientes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_pizza_mes`
+--
+
+DROP TABLE IF EXISTS `tbl_pizza_mes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_pizza_mes` (
+  `idProduto` int(11) NOT NULL AUTO_INCREMENT,
+  `imagem` varchar(1000) NOT NULL,
+  `descricao` varchar(4000) NOT NULL,
+  `preco` varchar(30) NOT NULL,
+  `pizzaMes` tinyint(1) NOT NULL,
+  PRIMARY KEY (`idProduto`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_pizza_mes`
+--
+
+LOCK TABLES `tbl_pizza_mes` WRITE;
+/*!40000 ALTER TABLE `tbl_pizza_mes` DISABLE KEYS */;
+INSERT INTO `tbl_pizza_mes` VALUES (1,'Arquivo/pizza1.jpg','Pizza de calabresa','34.20',0),(2,'Arquivo/pizza2.jpg','Pizza de queijo','32.80',0),(8,'Arquivo/Pizza3.jpg','Pizza de frango com catupiry','30.60',0),(10,'Arquivo/Pizza5.jpg','Pizza laranja','38.90',0),(11,'Arquivo/Pizza_mes.jpg','Pizza com borda de coxinha','34.89',1);
+/*!40000 ALTER TABLE `tbl_pizza_mes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_produto`
+--
+
+DROP TABLE IF EXISTS `tbl_produto`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_produto` (
+  `idProduto` int(11) NOT NULL AUTO_INCREMENT,
+  `imagem` varchar(50) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `descricao` varchar(500) NOT NULL,
+  `preco` varchar(20) NOT NULL,
+  `id_subCategoria` int(11) NOT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  `clicks` int(11) DEFAULT NULL,
+  `mediaAva` float DEFAULT NULL,
+  PRIMARY KEY (`idProduto`),
+  KEY `fk_produto_subCategoria_idx` (`id_subCategoria`),
+  CONSTRAINT `fk_produto_subCategoria` FOREIGN KEY (`id_subCategoria`) REFERENCES `tbl_subcategoria` (`id_subCategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_produto`
+--
+
+LOCK TABLES `tbl_produto` WRITE;
+/*!40000 ALTER TABLE `tbl_produto` DISABLE KEYS */;
+INSERT INTO `tbl_produto` VALUES (1,'Arquivo/pizza2.jpg','Pizza gelada','Pizza com 2 queijos, tomate. Colocada na geladeira após ser retirada do forno.','25.00',5,1,23,3.9),(2,'Arquivo/pizza1.jpg','Pizza de peperone','Pizza com 2 queijos, peperone e pequenas azeitonas.','30.00',4,1,53,3.9),(3,'Arquivo/Pizza6.jpg','Pizza de banana','Pizza com cortes longos de banana assada.','28.68',4,1,26,4.1),(4,'Arquivo/pizza2.jpg','Pizza de morango','Pizza com doce de chocolate e pedaços deliciosos de morengo por cima.','30.15',2,1,29,3.4),(5,'Arquivo/pizza5.jpg','Pizza de mussarela','Pizza com 4 queijos, tomate e azeitona.','25.50',2,1,23,3.7),(6,'Arquivo/pizza4.jpg','Pizza de frango','Pizza de frango desfiado e catupiry por cima de tudo.','28.50',5,1,22,5),(7,'Arquivo/pizza3.jpg','Pizza Portuguêsa','Pizza dom 3 quijos, ovo cosido, presunto e cebola.','29.90',1,1,52,0),(8,'Arquivo/pizza1.jpg','Pizza de cogumelo','Pizza com 2 queijos, orégano, pedalos pequenos de morango e cogumelos.','30.89',2,1,28,3.5),(9,'Arquivo/Pizza_mes.jpg','Pizza fria','Pizza diretamente da geladeira com um gosto muito bom!','30.50',1,1,4,0),(10,'Arquivo/pizza7.png','Pizza com salsicha','Pizza com borda de enroladinho de salsicha.','34.98',7,1,5,4.5);
+/*!40000 ALTER TABLE `tbl_produto` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_promocoes`
+--
+
+DROP TABLE IF EXISTS `tbl_promocoes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_promocoes` (
+  `idPromocoes` int(11) NOT NULL AUTO_INCREMENT,
+  `imagem` varchar(100) NOT NULL,
+  `descricao` varchar(4000) NOT NULL,
+  `preco` varchar(20) NOT NULL,
+  `desconto` tinyint(3) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  PRIMARY KEY (`idPromocoes`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_promocoes`
+--
+
+LOCK TABLES `tbl_promocoes` WRITE;
+/*!40000 ALTER TABLE `tbl_promocoes` DISABLE KEYS */;
+INSERT INTO `tbl_promocoes` VALUES (1,'Arquivo/Pizza3.jpg','Pizza frango com catupiry','32.48',10,1),(2,'Arquivo/Pizza_mes.jpg','Pizza com borda de coxinha','34.59',15,1),(5,'Arquivo/Pizza5.jpg','Pizza laranja','28.80',25,1);
+/*!40000 ALTER TABLE `tbl_promocoes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_subcategoria`
+--
+
+DROP TABLE IF EXISTS `tbl_subcategoria`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_subcategoria` (
+  `id_subCategoria` int(11) NOT NULL AUTO_INCREMENT,
+  `subCategoria` varchar(50) NOT NULL,
+  `idCategoria` int(11) NOT NULL,
+  `status` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id_subCategoria`),
+  KEY `fk_subCategoria_categoria_idx` (`idCategoria`),
+  CONSTRAINT `fk_subCategoria_categoria` FOREIGN KEY (`idCategoria`) REFERENCES `tbl_categoria` (`idCategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_subcategoria`
+--
+
+LOCK TABLES `tbl_subcategoria` WRITE;
+/*!40000 ALTER TABLE `tbl_subcategoria` DISABLE KEYS */;
+INSERT INTO `tbl_subcategoria` VALUES (1,'Pizzas frias',2,0),(2,'Pizzas com morango',1,0),(4,'Pizzas com banana',1,0),(5,'Pizzas com maçã',1,0),(6,'Pizzas tamanho família',3,0),(7,'Pizzas de salsicha',4,0);
+/*!40000 ALTER TABLE `tbl_subcategoria` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_usuario`
+--
+
+DROP TABLE IF EXISTS `tbl_usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_usuario` (
+  `codigo` int(11) NOT NULL AUTO_INCREMENT,
+  `usuario` varchar(15) NOT NULL,
+  `senha` varchar(20) NOT NULL,
+  `nome` varchar(30) NOT NULL,
+  `telefone` varchar(15) DEFAULT NULL,
+  `celular` varchar(15) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `sexo` char(1) NOT NULL,
+  `idNivel` int(11) NOT NULL,
+  PRIMARY KEY (`codigo`),
+  KEY `fk_nivel_idx` (`idNivel`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_usuario`
+--
+
+LOCK TABLES `tbl_usuario` WRITE;
+/*!40000 ALTER TABLE `tbl_usuario` DISABLE KEYS */;
+INSERT INTO `tbl_usuario` VALUES (2,'Bruno','456','Bruno Correia Ramos','11 9876-1234','11 93579-1593','br@7.com','M',0),(3,'Micael','12','Micael Áquila Rocha Bezerra','011 2145-9856','011 91254-9821','micaaquila@gmail.com','M',0),(8,'gabriel','127','Gabriel de Melo Marcondes','011 4707-2731','011 97374-7568','gabriel-santos1313@hotmail.com','M',1),(9,'teste','teste','teste','011 1254-9856','011 93578-1249','teste@teste.com','F',3),(10,'Joyce Andrade','gabrieltesao','Joyce Andrade Sacramento','47072731','941608460','joy_andrade11@hotmail.com','F',1);
+/*!40000 ALTER TABLE `tbl_usuario` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tblfaleconosco`
+--
+
+DROP TABLE IF EXISTS `tblfaleconosco`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tblfaleconosco` (
+  `codigo` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(50) NOT NULL,
+  `telefone` varchar(50) DEFAULT NULL,
+  `celular` varchar(50) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `homepage` varchar(255) DEFAULT NULL,
+  `facebook` varchar(255) DEFAULT NULL,
+  `sugestao` text,
+  `informacaoproduto` text,
+  `profissao` varchar(50) DEFAULT NULL,
+  `sexo` char(1) DEFAULT NULL,
+  PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tblfaleconosco`
+--
+
+LOCK TABLES `tblfaleconosco` WRITE;
+/*!40000 ALTER TABLE `tblfaleconosco` DISABLE KEYS */;
+INSERT INTO `tblfaleconosco` VALUES (48,'Ingrid','41448668','235647895','gjsdhsgdfjg@bhjvbjhv','dfgdfgdfg','dfgdfgdfg','testeeeeeeeeeeee','testeeeeeeee','reporter','f');
+/*!40000 ALTER TABLE `tblfaleconosco` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-12-12 11:21:51
