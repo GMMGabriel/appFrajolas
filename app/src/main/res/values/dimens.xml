@@ -1,0 +1,11 @@
+<resources>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+
+    <dimen name="depois_caracteristicas">5dp</dimen>
+    <dimen name="depois_definicao_caracteristicas">10dp</dimen>
+
+    <dimen name="caracteristicas">20sp</dimen>
+    <dimen name="bemVindo">50sp</dimen>
+</resources>

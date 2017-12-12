@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="br.com.frajolas.app.PizzaDetalhesActivity"
+    tools:showIn="@layout/activity_pizza_detalhes"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- MÉDIA DA PIZZA -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Média de avaliação:"
+                android:textColor="@color/verdeEscuro"
+                android:textSize="@dimen/caracteristicas"
+                android:layout_marginBottom="@dimen/depois_caracteristicas"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rtb_Media"
+                    android:numStars="5"
+                    android:focusableInTouchMode="false"
+                    android:focusable="false"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txt_Media"
+                    android:text="media"
+                    android:textSize="18sp"
+                    android:textColor="@color/preto"
+                    android:layout_gravity="center_vertical"/>
+
+            </LinearLayout>
+
+            <!-- DESCRIÇÃO -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="descrição:"
+                android:textColor="@color/verdeEscuro"
+                android:textSize="@dimen/caracteristicas"
+                android:layout_marginBottom="@dimen/depois_caracteristicas"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txt_descricao"
+                android:text="texto da descrição"
+                android:textColor="@color/preto"
+                android:layout_marginBottom="@dimen/depois_definicao_caracteristicas"/>
+
+            <!-- PREÇO -->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Preço:"
+                android:textColor="@color/verdeEscuro"
+                android:textSize="@dimen/caracteristicas"
+                android:layout_marginBottom="@dimen/depois_caracteristicas"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txt_preco"
+                android:text="valor da pizza"
+                android:textColor="@color/preto"
+                android:layout_marginBottom="@dimen/depois_definicao_caracteristicas"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Avaliação:"
+                android:textColor="@color/verdeEscuro"
+                android:textSize="@dimen/caracteristicas"
+                android:layout_marginBottom="@dimen/depois_caracteristicas"/>
+
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rtb_Avaliacao"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/depois_definicao_caracteristicas"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnSalvar"
+                android:text="Salvar avaliação"
+                android:backgroundTint="@color/colorAccent"
+                android:layout_gravity="center"
+                android:onClick="inserir"/>
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/pgbSalvando"
+                android:layout_gravity="center"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
